@@ -3,14 +3,16 @@
 </template>
 
 <script>
-import Chart from './WeightTrackerChart'
 import Modal from './AppModal'
+import Chart from './WeightTrackerChart'
+import Person from './WeightTrackerPerson'
 
 export default {
   name: 'WeightTracker',
   components: {
+    Modal,
     Chart,
-    Modal
+    Person
   }
 }
 </script>

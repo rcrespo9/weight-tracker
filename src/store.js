@@ -16,8 +16,16 @@ export default new Vuex.Store({
   actions: {
     getEntries ({ commit }) {
       fb.entriesCollection.get()
-        .then((res) => {
-          commit('setEntries', res.data())
+        .then((querySnapshot) => {
+          let entriesArray = []
+               
+          querySnapshot.forEach((doc) => {
+            let entry = doc.data()
+            entry.id = doc.id
+            entriesArray.push(entry)
+          })
+
+          commit('setEntries', entriesArray)
         })
         .catch(error => console.log(error))
     }

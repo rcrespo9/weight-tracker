@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-import firestore from 'firebase/firestore'
+import 'firebase/firestore'
 
 // Initialize Firebase
 firebase.initializeApp({
@@ -11,8 +11,17 @@ firebase.initializeApp({
   messagingSenderId: process.env.VUE_FIREBASE_MESSAGING_SENDER_ID
 })
 
+// Firebase utils
 const db = firebase.firestore()
 
 db.settings({
   timestampsInSnapshots: true
 })
+
+// firebase collections
+const entriesCollection = db.collection('entries');
+
+export {
+  db,
+  entriesCollection
+}

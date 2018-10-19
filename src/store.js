@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import WeightEntriesApi from '@/services/api/WeightEntries'
+const fb = require('./firebaseConfig.js')
 
 Vue.use(Vuex)
 
@@ -9,16 +9,15 @@ export default new Vuex.Store({
     entries: []
   },
   mutations: {
-    SET_ENTRIES (state, payload) {
+    setEntries (state, payload) {
       state.entries = payload
     }
   },
   actions: {
-    GET_ENTRIES (context, config) {
-      return WeightEntriesApi.getEntries()
-        .then(entries => {
-          console.log(entries)
-          context.commit('SET_ENTRIES', entries)
+    getEntries ({ commit }) {
+      fb.entriesCollection.get()
+        .then((res) => {
+          commit('setEntries', res.data())
         })
         .catch(error => console.log(error))
     }

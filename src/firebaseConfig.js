@@ -19,7 +19,7 @@ db.settings({
 })
 
 // firebase collections
-const entriesCollection = db.collection('entries');
+const entriesCollection = db.collection('entries')
 
 export {
   db,

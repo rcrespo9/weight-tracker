@@ -16,8 +16,13 @@ export default {
       })
       .catch(error => console.log(error))
   },
-  addEntry (entry) {
-
+  addEntry (weight, notes) {
+    return fb.entriesCollection.add({
+      weight: weight,
+      date: new Date(),
+      notes: notes
+    })
+      .then(docRef => console.log(`Document written with ID ${docRef}`))
   },
   updateEntry (id) {
 

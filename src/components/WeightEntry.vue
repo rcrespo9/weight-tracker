@@ -5,13 +5,13 @@
   >
     <modal-form-field>
       <label for="weight">Weight
-        <input type="number" v-model="weight">
+        <input type="number" v-model.trim="weight">
       </label>
     </modal-form-field>
 
     <modal-form-field>
       <label for="notes">Notes
-        <textarea cols="30" rows="10"></textarea>
+        <textarea cols="30" rows="10" v-model="notes"></textarea>
       </label>
     </modal-form-field>
   </modal-form>

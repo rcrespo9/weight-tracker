@@ -1,4 +1,4 @@
-const fb = require('../firebaseConfig.js')
+const fb = require('@/firebaseConfig.js')
 
 export default {
   getEntries () {
@@ -14,7 +14,6 @@ export default {
 
         return entriesArray
       })
-      .catch(error => console.log(error))
   },
   addEntry (weight, notes) {
     return fb.entriesCollection.add({
@@ -22,8 +21,6 @@ export default {
       date: new Date(),
       notes: notes
     })
-      .then(docRef => console.log(`Document written with ID ${docRef.id}`))
-      .catch(error => console.log(error))
   },
   updateEntry (id) {
 

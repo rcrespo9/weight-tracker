@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <LoginForm />
     <WeightEntryForm />
   </div>
 </template>
 
 <script>
+import LoginForm from './components/LoginForm'
 import WeightEntryForm from './components/WeightEntryForm'
 
 export default {
   name: 'app',
   components: {
+    LoginForm,
     WeightEntryForm
   }
 }

@@ -15,6 +15,7 @@ firebase.initializeApp({
 // Firebase utils
 const db = firebase.firestore()
 const auth = firebase.auth()
+const currentUser = auth.currentUser
 
 db.settings({
   timestampsInSnapshots: true
@@ -26,5 +27,6 @@ const entriesCollection = db.collection('entries')
 export {
   db,
   auth,
+  currentUser,
   entriesCollection
 }

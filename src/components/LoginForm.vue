@@ -3,7 +3,7 @@
     title="Log In"
     :onSubmitMethod="login"
   >
-    <p v-if="error">{{error}}</p>
+    <p v-if="errorMessage">{{errorMessage}}</p>
     <modal-form-field>
       <label for="email">Email Address
         <input type="email" v-model.trim="email">
@@ -15,7 +15,7 @@
         <input type="password" v-model.trim="password">
       </label>
     </modal-form-field>
-  </modal-form-wrapper>  
+  </modal-form-wrapper>
 </template>
 
 <script>
@@ -33,19 +33,20 @@ export default {
     return {
       email: '',
       password: '',
-      success: false,
-      error: ''
+      isLoginSuccess: false,
+      errorMessage: ''
     }
   },
   methods: {
     login () {
       LoginApi.login(this.email, this.password)
-        .then(() => {
-          this.success = true;
+        .then(user => {
+          this.isLoginSuccess = true
           this.email = ''
           this.password = ''
+          this.$store.commit('setCurrentUser', user.user)
         })
-        .catch(error => this.error = error.message)
+        .catch(error => this.errorMessage = error.message)
     }
   }
 }

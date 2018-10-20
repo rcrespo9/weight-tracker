@@ -3,6 +3,7 @@
     title="Add Weight Entry"
     :onSubmitMethod="submitWeightEntry"
   >
+    <p v-if="errorMessage">{{errorMessage}}</p>
     <modal-form-field>
       <label for="weight">Weight
         <input type="number" v-model.trim.number="weight">
@@ -31,7 +32,8 @@ export default {
   data () {
     return {
       weight: '',
-      notes: ''
+      notes: '',
+      errorMessage: ''
     }
   },
   methods: {
@@ -41,7 +43,7 @@ export default {
           this.weight = ''
           this.notes = ''
         })
-        .catch(error => console.log(error))
+        .catch(error => this.errorMessage = error.message)
     }
   }
 }

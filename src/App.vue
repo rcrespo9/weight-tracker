@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-
+    <WeightEntryForm />
   </div>
 </template>
 
 <script>
+import WeightEntryForm from './components/WeightEntryForm'
 
 export default {
   name: 'app',
   components: {
-  },
-  created () {
-    this.$store.dispatch('getEntries')
+    WeightEntryForm
   }
 }
 </script>

@@ -22,7 +22,6 @@ export default {
     },
     submitBtnText: {
       type: String,
-      required: true,
       default: 'Submit'
     }
   }

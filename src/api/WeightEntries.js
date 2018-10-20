@@ -22,7 +22,8 @@ export default {
       date: new Date(),
       notes: notes
     })
-      .then(docRef => console.log(`Document written with ID ${docRef}`))
+      .then(docRef => console.log(`Document written with ID ${docRef.id}`))
+      .catch(error => console.log(error))
   },
   updateEntry (id) {
 

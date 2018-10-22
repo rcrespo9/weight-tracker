@@ -1,7 +1,7 @@
 <template>
   <div class="modal-form">
     <h2>{{title}}</h2>
-    <ul v-if="errors">
+    <ul v-if="errors.length">
       <li v-for="(error, index) in errors" :key="index">{{error}}</li>
     </ul>
     <p v-if="isSubmitting">Submitting...</p>

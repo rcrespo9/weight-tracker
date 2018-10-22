@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <LoginForm />
-    <WeightEntryForm />
+    <WeightEntryForm v-if="isLoggedIn" />
+    <LoginForm v-else />
   </div>
 </template>
 
@@ -14,6 +14,13 @@ export default {
   components: {
     LoginForm,
     WeightEntryForm
+  },
+  computed: {
+    isLoggedIn () {
+      if (this.$store.state.currentUser) return true;
+
+      return false;
+    }
   }
 }
 </script>

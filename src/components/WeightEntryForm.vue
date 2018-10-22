@@ -2,8 +2,10 @@
   <modal-form-wrapper
     title="Add Weight Entry"
     :onSubmitMethod="submitWeightEntry"
+    :errorMessage="errorMessage"
+    :isSubmitting="isSubmitting"
+    :isSuccess="isEntrySubmitted"
   >
-    <p v-if="errorMessage">{{errorMessage}}</p>
     <modal-form-field label="Weight">
       <input type="text" v-model.trim.number="weight">
     </modal-form-field>
@@ -29,18 +31,27 @@ export default {
     return {
       weight: '',
       notes: '',
-      errorMessage: ''
+      errorMessage: '',
+      isSubmitting: false,
+      isEntrySubmitted: false
     }
   },
   methods: {
     submitWeightEntry () {
+      this.isSubmitting = true
+
       WeightEntriesApi.addEntry(this.weight, this.notes)
         .then(res => {
           this.weight = ''
           this.notes = ''
+          this.isEntrySubmitted = true
         })
         .catch(error => {
           this.errorMessage = error.message
+        })
+        .finally(() => {
+          this.isSubmitting = false
+          this.isEntrySubmitted = false
         })
     }
   }

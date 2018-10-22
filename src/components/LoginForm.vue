@@ -2,8 +2,10 @@
   <modal-form-wrapper
     title="Log In"
     :onSubmitMethod="login"
+    :errorMessage="errorMessage"
+    :isSuccess="isLoginSuccess"
+    :isSubmitting="isSubmitting"
   >
-    <p v-if="errorMessage">{{errorMessage}}</p>
     <modal-form-field label="Email Address">
       <input type="email" v-model.trim="email">
     </modal-form-field>
@@ -30,12 +32,15 @@ export default {
       email: '',
       password: '',
       isLoginSuccess: false,
+      isLoggingIn: false,
       errorMessage: ''
     }
   },
   methods: {
     login () {
       LoginApi.login(this.email, this.password)
+      this.isLoggingIn = true
+
         .then(user => {
           this.isLoginSuccess = true
           this.email = ''
@@ -44,6 +49,9 @@ export default {
         })
         .catch(error => {
           this.errorMessage = error.message
+        })
+        .finally(() => {
+          this.isLoggingIn = false
         })
     }
   }

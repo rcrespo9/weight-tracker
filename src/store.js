@@ -7,6 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     entries: [],
+    currentWeight: null,
+    myHeight: null,
     currentUser: null
   },
   mutations: {
@@ -15,6 +17,12 @@ export default new Vuex.Store({
     },
     setCurrentUser (state, val) {
       state.currentUser = val
+    },
+    setCurrentWeight (state, val) {
+      state.currentWeight = val
+    },
+    setHeight (state, val) {
+      state.myHeight = val
     }
   },
   actions: {

@@ -4,16 +4,12 @@
     :onSubmitMethod="submitWeightEntry"
   >
     <p v-if="errorMessage">{{errorMessage}}</p>
-    <modal-form-field>
-      <label for="weight">Weight
-        <input type="number" v-model.trim.number="weight">
-      </label>
+    <modal-form-field label="Weight">
+      <input type="text" v-model.trim.number="weight">
     </modal-form-field>
 
-    <modal-form-field>
-      <label for="notes">Notes
-        <textarea cols="30" rows="10" v-model="notes"></textarea>
-      </label>
+    <modal-form-field label="Notes">
+      <textarea v-model="notes"></textarea>
     </modal-form-field>
   </modal-form-wrapper>
 </template>
@@ -43,7 +39,9 @@ export default {
           this.weight = ''
           this.notes = ''
         })
-        .catch(error => this.errorMessage = error.message)
+        .catch(error => {
+          this.errorMessage = error.message
+        })
     }
   }
 }

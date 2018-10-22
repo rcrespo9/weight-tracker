@@ -4,16 +4,12 @@
     :onSubmitMethod="login"
   >
     <p v-if="errorMessage">{{errorMessage}}</p>
-    <modal-form-field>
-      <label for="email">Email Address
-        <input type="email" v-model.trim="email">
-      </label>
+    <modal-form-field label="Email Address">
+      <input type="email" v-model.trim="email">
     </modal-form-field>
 
-    <modal-form-field>
-      <label for="password">Password
-        <input type="password" v-model.trim="password">
-      </label>
+    <modal-form-field label="Password">
+      <input type="password" v-model.trim="password">
     </modal-form-field>
   </modal-form-wrapper>
 </template>
@@ -46,7 +42,9 @@ export default {
           this.password = ''
           this.$store.commit('setCurrentUser', user.user)
         })
-        .catch(error => this.errorMessage = error.message)
+        .catch(error => {
+          this.errorMessage = error.message
+        })
     }
   }
 }

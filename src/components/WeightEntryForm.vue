@@ -2,7 +2,7 @@
   <modal-form-wrapper
     title="Add Weight Entry"
     :onSubmitMethod="submitWeightEntry"
-    :errorMessage="errorMessage"
+    :errors="errors"
     :isSubmitting="isSubmitting"
     :isSuccess="isEntrySubmitted"
   >
@@ -31,28 +31,40 @@ export default {
     return {
       weight: '',
       notes: '',
-      errorMessage: '',
+      errors: [],
       isSubmitting: false,
       isEntrySubmitted: false
     }
   },
   methods: {
-    submitWeightEntry () {
-      this.isSubmitting = true
+    checkForm () {
+      if (this.weight) return true
 
-      WeightEntriesApi.addEntry(this.weight, this.notes)
-        .then(res => {
-          this.weight = ''
-          this.notes = ''
-          this.isEntrySubmitted = true
-        })
-        .catch(error => {
-          this.errorMessage = error.message
-        })
-        .finally(() => {
-          this.isSubmitting = false
-          this.isEntrySubmitted = false
-        })
+      this.errors = []
+
+      if (!this.weight) {
+        this.errors.push('Weight is required.')
+      }
+    },
+    submitWeightEntry () {
+      if ( this.checkForm() ) {
+        this.isSubmitting = true
+        this.errors = []
+
+        WeightEntriesApi.addEntry(this.weight, this.notes)
+          .then(res => {
+            this.weight = ''
+            this.notes = ''
+            this.isEntrySubmitted = true
+          })
+          .catch(error => {
+            this.errors.push(error.message)
+          })
+          .finally(() => {
+            this.isSubmitting = false
+            this.isEntrySubmitted = false
+          })
+      }
     }
   }
 }

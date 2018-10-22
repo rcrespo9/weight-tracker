@@ -1,7 +1,9 @@
 <template>
   <div class="modal-form">
     <h2>{{title}}</h2>
-    <p v-if="errorMessage">{{errorMessage}}</p>
+    <ul v-if="errors">
+      <li v-for="(error, index) in errors" :key="index">{{error}}</li>
+    </ul>
     <p v-if="isSubmitting">Submitting...</p>
     <form @submit.prevent="onSubmitMethod">
       <slot></slot>
@@ -26,7 +28,7 @@ export default {
       type: String,
       default: 'Submit'
     },
-    errorMessage: String,
+    errors: Array,
     isSubmitting: Boolean,
     isSuccess: Boolean
   }

@@ -2,9 +2,9 @@
   <modal-form-wrapper
     title="Log In"
     :onSubmitMethod="login"
-    :errorMessage="errorMessage"
+    :errors="errors"
     :isSuccess="isLoginSuccess"
-    :isSubmitting="isSubmitting"
+    :isSubmitting="isLoggingIn"
   >
     <modal-form-field label="Email Address">
       <input type="email" v-model.trim="email">
@@ -33,26 +33,42 @@ export default {
       password: '',
       isLoginSuccess: false,
       isLoggingIn: false,
-      errorMessage: ''
+      errors: []
     }
   },
   methods: {
-    login () {
-      LoginApi.login(this.email, this.password)
-      this.isLoggingIn = true
+    checkForm () {
+      if (this.email && this.password) return true
 
-        .then(user => {
-          this.isLoginSuccess = true
-          this.email = ''
-          this.password = ''
-          this.$store.commit('setCurrentUser', user.user)
-        })
-        .catch(error => {
-          this.errorMessage = error.message
-        })
-        .finally(() => {
-          this.isLoggingIn = false
-        })
+      this.errors = []
+
+      if (!this.email) {
+        this.errors.push('The email address is required.')
+      }
+
+      if (!this.password) {
+        this.errors.push('The password is required.')
+      }
+    },
+    login () {
+      if ( this.checkForm() ) {
+        this.isLoggingIn = true
+        this.errors = []
+
+        LoginApi.login(this.email, this.password)
+          .then(user => {
+            this.isLoginSuccess = true
+            this.email = ''
+            this.password = ''
+            this.$store.commit('setCurrentUser', user.user)
+          })
+          .catch(error => {
+            this.errors.push(error.message)
+          })
+          .finally(() => {
+            this.isLoggingIn = false
+          })
+      }
     }
   }
 }

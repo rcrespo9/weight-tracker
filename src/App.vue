@@ -15,11 +15,14 @@ export default {
     LoginForm,
     WeightEntryForm
   },
+  created () {
+    this.$store.dispatch('getLastEntry')
+  },
   computed: {
     isLoggedIn () {
-      if (this.$store.state.currentUser) return true;
+      if (this.$store.state.currentUser) return true
 
-      return false;
+      return false
     }
   }
 }

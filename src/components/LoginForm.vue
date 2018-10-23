@@ -51,7 +51,7 @@ export default {
       }
     },
     login () {
-      if ( this.checkForm() ) {
+      if (this.checkForm()) {
         this.isLoggingIn = true
         this.errors = []
 

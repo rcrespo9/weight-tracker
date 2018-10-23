@@ -10,6 +10,11 @@
       <input type="text" v-model.trim.number="weight">
     </modal-form-field>
 
+    <modal-form-field label="Height">
+      <input type="text" v-model.trim.number="height.feet">
+      <input type="text" v-model.trim.number="height.inches">
+    </modal-form-field>
+
     <modal-form-field label="Notes">
       <textarea v-model="notes"></textarea>
     </modal-form-field>
@@ -31,6 +36,10 @@ export default {
     return {
       weight: '',
       notes: '',
+      height: {
+        feet: '',
+        inches: ''
+      },
       errors: [],
       isSubmitting: false,
       isEntrySubmitted: false
@@ -38,22 +47,29 @@ export default {
   },
   methods: {
     checkForm () {
-      if (this.weight) return true
+      if (this.weight && this.height.feet && this.height.inches) return true
 
       this.errors = []
 
       if (!this.weight) {
         this.errors.push('Weight is required.')
       }
+
+      if (!this.height.feet || !this.height.inches) {
+        this.errors.push('Height is required')
+      }
     },
-    submitWeightEntry () {
-      if ( this.checkForm() ) {
+    submitWeightEntry (e) {
+      if (this.checkForm()) {
         this.isSubmitting = true
         this.errors = []
 
-        WeightEntriesApi.addEntry(this.weight, this.notes)
+        WeightEntriesApi.addEntry(this.weight, this.height, this.notes)
           .then(res => {
+            this.$store.dispatch('getLastEntry')
             this.weight = ''
+            this.height.feet = ''
+            this.height.inches = ''
             this.notes = ''
             this.isEntrySubmitted = true
           })

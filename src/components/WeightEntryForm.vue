@@ -16,7 +16,7 @@
     </modal-form-field>
 
     <modal-form-field label="Notes">
-      <textarea v-model="notes"></textarea>
+      <textarea maxlength="140" v-model="notes"></textarea>
     </modal-form-field>
   </modal-form-wrapper>
 </template>

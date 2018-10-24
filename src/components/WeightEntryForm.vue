@@ -10,13 +10,17 @@
       <input type="text" v-model.trim.number="weight">
     </modal-form-field>
 
-    <modal-form-field label="Height">
-      <input type="text" v-model.trim.number="height.feet">
-      <input type="text" v-model.trim.number="height.inches">
-    </modal-form-field>
+    <modal-form-fieldset legend="Height">
+      <modal-form-field label="Feet">
+        <input type="text" v-model.trim.number="height.feet">
+      </modal-form-field>
+      <modal-form-field label="Inches">
+        <input type="text" v-model.trim.number="height.inches">
+      </modal-form-field>
+    </modal-form-fieldset>    
 
     <modal-form-field label="Notes">
-      <textarea maxlength="140" v-model="notes"></textarea>
+      <textarea maxlength="100" v-model="notes"></textarea>
     </modal-form-field>
   </modal-form-wrapper>
 </template>
@@ -24,13 +28,15 @@
 <script>
 import ModalFormWrapper from './ModalFormWrapper'
 import ModalFormField from './ModalFormField'
+import ModalFormFieldset from './ModalFormFieldset'
 import WeightEntriesApi from '@/api/WeightEntries'
 
 export default {
   name: 'WeightEntry',
   components: {
     ModalFormWrapper,
-    ModalFormField
+    ModalFormField,
+    ModalFormFieldset
   },
   data () {
     return {

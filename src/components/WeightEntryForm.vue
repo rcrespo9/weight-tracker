@@ -18,7 +18,7 @@
       <modal-form-field label="Inches">
         <input type="text" v-model.trim.number="height.inches">
       </modal-form-field>
-    </modal-form-fieldset>    
+    </modal-form-fieldset>
 
     <modal-form-field label="Notes">
       <textarea maxlength="100" v-model="notes"></textarea>

@@ -1,0 +1,5 @@
+<template>
+  <header class="header">
+    <nav class="header__nav"></nav>
+  </header>
+</template>

@@ -3,6 +3,7 @@
     title="Add Weight Entry"
     :onSubmitMethod="submitWeightEntry"
     :errors="errors"
+    :isModalOpen="false"
     :isSubmitting="isSubmitting"
     :isSuccess="isEntrySubmitted"
   >

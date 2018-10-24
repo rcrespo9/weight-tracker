@@ -3,6 +3,7 @@
     title="Log In"
     :onSubmitMethod="login"
     :errors="errors"
+    :isModalOpen="false"
     :isSuccess="isLoginSuccess"
     :isSubmitting="isLoggingIn"
   >

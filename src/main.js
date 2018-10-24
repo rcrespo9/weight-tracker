@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 let app
 fb.auth.onAuthStateChanged(user => {
   if (user) {
-    store.commit('setCurrentUser', user)
+    store.dispatch('storeUserData', user)
   }
 
   if (!app) {

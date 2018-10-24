@@ -1,13 +1,19 @@
 <template>
   <div id="app">
-    <WeightEntryForm v-if="isLoggedIn" />
-    <LoginForm v-else />
+    <div v-if="isLoggedIn">
+      <button type="button" @click="logout">Log Out</button>
+      <WeightEntryForm />
+    </div>
+    <div v-else>
+      <LoginForm />
+    </div>
   </div>
 </template>
 
 <script>
 import LoginForm from './components/LoginForm'
 import WeightEntryForm from './components/WeightEntryForm'
+import LoginApi from '@/api/Login'
 
 export default {
   name: 'app',
@@ -23,6 +29,12 @@ export default {
       if (this.$store.state.currentUser) return true
 
       return false
+    }
+  },
+  methods: {
+    logout () {
+      LoginApi.logout()
+      this.$store.dispatch('clearUserData')
     }
   }
 }

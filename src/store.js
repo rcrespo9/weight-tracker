@@ -38,9 +38,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getEntries ({
-      commit
-    }) {
+    getEntries ({ commit }) {
       WeightEntriesApi.getEntries()
         .then(entries => commit('setEntries', entries))
         .catch(error => console.log(error))
@@ -57,9 +55,10 @@ export default new Vuex.Store({
         })
         .catch(error => console.log(error))
     },
-    clearData ({
-      commit
-    }) {
+    storeUserData ({ commit }, user) {
+      commit('setCurrentUser', user)
+    },
+    clearUserData ({ commit }) {
       commit('setCurrentUser', null)
     }
   }

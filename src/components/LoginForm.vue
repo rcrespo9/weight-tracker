@@ -57,10 +57,10 @@ export default {
 
         LoginApi.login(this.email, this.password)
           .then(user => {
+            this.$store.dispatch('storeUserData', user)
             this.isLoginSuccess = true
             this.email = ''
             this.password = ''
-            this.$store.commit('setCurrentUser', user.user)
           })
           .catch(error => {
             this.errors.push(error.message)

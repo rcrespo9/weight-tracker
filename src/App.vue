@@ -1,47 +1,27 @@
 <template>
   <div id="app">
-    <div v-if="isLoggedIn">
-      <button type="button" @click="logout">Log Out</button>
-      <WeightEntryForm />
-    </div>
-    <div v-else>
-      <LoginForm />
-    </div>
+    <Header />
+    <main class="page-content"></main>
   </div>
 </template>
 
 <script>
-import LoginForm from './components/LoginForm'
-import WeightEntryForm from './components/WeightEntryForm'
-import LoginApi from '@/api/Login'
+import Header from './components/TheHeader'
 
 export default {
   name: 'app',
   components: {
-    LoginForm,
-    WeightEntryForm
+    Header
   },
   created () {
     this.$store.dispatch('getLastEntry')
-  },
-  computed: {
-    isLoggedIn () {
-      if (this.$store.state.currentUser) return true
-
-      return false
-    }
-  },
-  methods: {
-    logout () {
-      LoginApi.logout()
-      this.$store.dispatch('clearUserData')
-    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
+body {
+  background-color: $lt-gray;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

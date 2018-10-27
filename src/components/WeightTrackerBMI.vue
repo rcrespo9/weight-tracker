@@ -3,7 +3,7 @@
 
 <script>
 export default {
-  name: 'Person'
+  name: 'BMI'
 }
 </script>
 

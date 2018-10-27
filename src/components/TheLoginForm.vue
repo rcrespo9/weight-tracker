@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import ModalFormWrapper from './ModalFormWrapper'
-import ModalFormField from './ModalFormField'
+import ModalFormWrapper from './AppModalFormWrapper'
+import ModalFormField from './AppModalFormField'
 import LoginApi from '@/api/Login'
 
 export default {

@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import ModalFormWrapper from './ModalFormWrapper'
-import ModalFormField from './ModalFormField'
-import ModalFormFieldset from './ModalFormFieldset'
+import ModalFormWrapper from './AppModalFormWrapper'
+import ModalFormField from './AppModalFormField'
+import ModalFormFieldset from './AppModalFormFieldset'
 import WeightEntriesApi from '@/api/WeightEntries'
 
 export default {

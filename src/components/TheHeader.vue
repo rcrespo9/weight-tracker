@@ -4,16 +4,47 @@
       <div class="nav__logo">
         <h1 class="logo__text">Personal Weight Tracker</h1>
       </div>
-      <div class="nav__btn-group">
-
+      <div class="nav__btn-group" v-if="isLoggedIn">
+        <div class="nav__btn">
+          <IconButton 
+            text="Add Weight Entry" 
+            icon="plus" 
+          />
+        </div>
+        <div class="nav__btn">
+          <IconButton 
+            text="Log Out" 
+            icon="log-out" 
+          />
+        </div>
+      </div>
+      <div class="nav__btn-group" v-else>
+        <div class="nav__btn">
+          <IconButton 
+            text="Log In" 
+            icon="log-in" 
+          />
+        </div>        
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import IconButton from './AppIconButton'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    IconButton
+  },
+  computed: {
+    isLoggedIn () {
+      if (this.$store.currentUser) return true
+
+      return false
+    }
+  }
 }
 </script>
 
@@ -41,4 +72,16 @@ $nav-el-padding: ms(2);
   font-size: ms(1);
   font-weight: map-get($font-weight, regular);
 }
+
+.nav__btn-group,
+.nav__btn {
+  display: inherit;
+}
+
+.nav__btn {
+  border-left: 2px solid $md-gray;
+  padding: 0 $nav-el-padding;
+  align-items: center;
+}
+
 </style>

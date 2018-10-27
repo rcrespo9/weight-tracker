@@ -1,6 +1,7 @@
 <template>
-  <button type="button" class="icon-btn">
-    <span class="icon-btn__text">{{text}}</span>
+  <button type="button" class="btn">
+    <svg class="btn__icon"><use :xlink:href="`#icon-${icon}`" title></use></svg>
+    <span class="btn__text">{{text}}</span>
   </button>
 </template>
 
@@ -11,17 +12,34 @@ export default {
     text: {
       type: String,
       required: true
+    },
+    icon: {
+      type: String,
+      required: true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.icon-btn {
+.btn {
+  padding: 0;
+  border: none;
+  background: transparent;
   appearance: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.icon-btn__text {
+.btn__icon {
+  width: ms(3);
+  height: ms(3);
+  fill: $md-gray-text;
+}
+
+.btn__text {
   @include sr-only;
 }
 </style>

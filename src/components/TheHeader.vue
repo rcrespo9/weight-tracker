@@ -72,7 +72,7 @@ $nav-el-padding: ms(2);
   margin: 0;
   color: $md-gray-text;
   font-size: ms(1);
-  font-weight: map-get($font-weight, medium);
+  font-weight: map-get($font-weight, regular);
 }
 
 .nav__btn-group,

@@ -4,6 +4,14 @@
   padding: 0 ms(1);
 }
 
+@mixin border($side, $width: 2px) {
+  border#{$side}: $width solid $md-gray;
+}
+
+@mixin transition($property) {
+  transition: $property .3s ease-in-out;
+}
+
 @mixin sr-only {
   position: absolute;
   left: -10000px;

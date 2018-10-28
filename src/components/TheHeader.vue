@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     isLoggedIn () {
-      if (this.$store.currentUser) return true
+      if (this.$store.currentUser !== null) return true
 
       return false
     }
@@ -54,6 +54,7 @@ $nav-el-padding: ms(2);
 .page-header {
   background-color: $white;
   height: $header-height;
+  @include border('-bottom');
 }
 
 .page-header__nav {
@@ -69,8 +70,9 @@ $nav-el-padding: ms(2);
 
 .logo__text {
   margin: 0;
+  color: $md-gray-text;
   font-size: ms(1);
-  font-weight: map-get($font-weight, regular);
+  font-weight: map-get($font-weight, medium);
 }
 
 .nav__btn-group,
@@ -79,9 +81,9 @@ $nav-el-padding: ms(2);
 }
 
 .nav__btn {
-  border-left: 2px solid $md-gray;
   padding: 0 $nav-el-padding;
   align-items: center;
+  @include border('-left');
 }
 
 </style>

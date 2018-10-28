@@ -36,7 +36,12 @@ export default {
 .btn__icon {
   width: ms(3);
   height: ms(3);
-  fill: $md-gray-text;
+  fill: $dark-gray;
+  @include transition(fill);
+
+  &:hover {
+    fill: $blue;
+  }
 }
 
 .btn__text {

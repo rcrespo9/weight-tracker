@@ -5,6 +5,7 @@ import WeightEntriesApi from './api/WeightEntries'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   state: {
     entries: [],
     currentHeight: null,

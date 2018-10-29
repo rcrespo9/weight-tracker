@@ -24,7 +24,7 @@ export default {
       isDangerousBMI: false
     }
   },
-  created() {
+  updated() {
     this.bmiCheck(this.bmi);
   },
   computed: {

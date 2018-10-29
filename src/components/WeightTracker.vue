@@ -1,15 +1,19 @@
 <template>
+  <div class="weight-tracker">
+    <Chart />
+    <BMI />
+  </div>
 </template>
 
 <script>
 import Chart from './WeightTrackerChart'
-import Person from './WeightTrackerPerson'
+import BMI from './WeightTrackerBMI'
 
 export default {
   name: 'WeightTracker',
   components: {
     Chart,
-    Person
+    BMI
   }
 }
 </script>

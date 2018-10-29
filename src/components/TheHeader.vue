@@ -6,25 +6,25 @@
       </div>
       <div class="nav__btn-group" v-if="isLoggedIn">
         <div class="nav__btn">
-          <IconButton 
-            text="Add Weight Entry" 
-            icon="plus" 
+          <IconButton
+            text="Add Weight Entry"
+            icon="plus"
           />
         </div>
         <div class="nav__btn">
-          <IconButton 
-            text="Log Out" 
-            icon="log-out" 
+          <IconButton
+            text="Log Out"
+            icon="log-out"
           />
         </div>
       </div>
       <div class="nav__btn-group" v-else>
         <div class="nav__btn">
-          <IconButton 
-            text="Log In" 
-            icon="log-in" 
+          <IconButton
+            text="Log In"
+            icon="log-in"
           />
-        </div>        
+        </div>
       </div>
     </nav>
   </header>

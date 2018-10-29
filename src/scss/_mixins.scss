@@ -1,10 +1,11 @@
 @mixin l-container() {
   max-width: ms(15);
   margin: 0 auto;
-  padding: 0 ms(1);
+  padding-left: ms(0);
+  padding-right: ms(0);
 }
 
-@mixin border($side, $width: 2px) {
+@mixin border($side: '', $width: 2px) {
   border#{$side}: $width solid $md-gray;
 }
 

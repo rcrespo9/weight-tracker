@@ -1,10 +1,10 @@
 <template>
-  <div class="card">
+  <article class="card">
     <div class="card__body">
-      <h2 class="card__header">{{header}}</h2>
+      <h2 class="card__header">{{header}}</h2>  
       <slot></slot>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-.card {
+.card__body {
   padding: ms(3);
   background-color: $white;
   border-radius: 4px;
@@ -29,9 +29,9 @@ export default {
 
 .card__header {
   margin-top: 0;
-  margin-bottom: ms(1);
+  margin-bottom: ms(0);
   color: $md-gray-text;
-  font-size: ms(2);
+  font-size: ms(1);
   font-weight: map-get($font-weight, regular);
 }
 </style>

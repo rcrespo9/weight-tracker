@@ -1,8 +1,8 @@
 @mixin l-container() {
-  max-width: ms(15);
+  max-width: ms(16);
   margin: 0 auto;
-  padding-left: ms(0);
-  padding-right: ms(0);
+  padding-left: $global-padding;
+  padding-right: $global-padding;
 }
 
 @mixin border($side: '', $width: 2px) {
@@ -10,7 +10,7 @@
 }
 
 @mixin transition($property) {
-  transition: $property .3s ease-in-out;
+  transition: $property .15s ease-in-out;
 }
 
 @mixin sr-only {

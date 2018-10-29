@@ -1,6 +1,5 @@
 <template>
-  <card header="Weight Tracker">
-
+  <card header="Weight Tracker Chart">
   </card>
 </template>
 

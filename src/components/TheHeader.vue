@@ -49,7 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$nav-el-padding: ms(2);
 
 .page-header {
   background-color: $white;
@@ -65,7 +64,7 @@ $nav-el-padding: ms(2);
 
 .nav__logo {
   align-self: center;
-  padding-left: $nav-el-padding;
+  padding-left: $global-padding;
 }
 
 .logo__text {
@@ -81,7 +80,7 @@ $nav-el-padding: ms(2);
 }
 
 .nav__btn {
-  padding: 0 $nav-el-padding;
+  padding: 0 $global-padding;
   align-items: center;
   @include border('-left');
 }

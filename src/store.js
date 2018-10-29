@@ -17,7 +17,7 @@ export default new Vuex.Store({
         const heightInInches = (state.currentHeight.feet * 12) + state.currentHeight.inches
         const BMI = state.currentWeight * 703 / (Math.pow(heightInInches, 2))
 
-        return parseFloat(BMI).toFixed(1)
+        return parseFloat(BMI.toFixed(1))
       } else {
         return null
       }

@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     isLoggedIn () {
-      if (this.$store.currentUser !== null) return true
+      if (this.$store.currentUser) return true
 
       return false
     }

@@ -19,16 +19,7 @@ export default {
   mounted() {
     const $ctx = document.getElementById('WeightTrackerChart')
     const lineChart = new Chart($ctx, {
-      type: 'line',
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }      
+      type: 'line'     
     })
   }
 }

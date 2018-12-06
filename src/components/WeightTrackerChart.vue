@@ -13,13 +13,13 @@ export default {
   components: {
     Card
   },
-  created() {
+  created () {
     this.$store.dispatch('getEntries')
   },
-  mounted() {
+  mounted () {
     const $ctx = document.getElementById('WeightTrackerChart')
     const lineChart = new Chart($ctx, {
-      type: 'line'     
+      type: 'line'
     })
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <article class="card">
     <div class="card__body">
-      <h2 class="card__header">{{header}}</h2>  
+      <h2 class="card__header">{{header}}</h2>
       <slot></slot>
     </div>
   </article>

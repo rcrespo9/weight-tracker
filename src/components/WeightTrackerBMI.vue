@@ -16,7 +16,7 @@ export default {
   components: {
     Card
   },
-  data() {
+  data () {
     return {
       bmiDescription: '',
       isNormalBMI: false,
@@ -24,14 +24,14 @@ export default {
       isDangerousBMI: false
     }
   },
-  updated() {
-    this.bmiCheck(this.bmi);
+  updated () {
+    this.bmiCheck(this.bmi)
   },
   computed: {
     ...mapGetters([
       'bmi'
     ]),
-    bmiClass() {
+    bmiClass () {
       return {
         'bmi__number--normal': this.isNormalBMI,
         'bmi__number--concerning': this.isConcerningBMI,
@@ -40,20 +40,20 @@ export default {
     }
   },
   methods: {
-    bmiCheck(bmi) {
+    bmiCheck (bmi) {
       switch (true) {
         case (bmi < 18.5):
           this.isDangerousBMI = true
           this.bmiDescription = 'Underweight'
-          break;
+          break
         case (bmi >= 18.5 && bmi <= 24.9):
           this.isNormalBMI = true
           this.bmiDescription = 'Normal'
-          break;
+          break
         case (bmi >= 25 && bmi <= 29.9):
           this.isConcerningBMI = true
           this.bmiDescription = 'Overweight'
-          break;
+          break
         case (bmi >= 30):
           this.isDangerousBMI = true
           this.bmiDescription = 'Obese'

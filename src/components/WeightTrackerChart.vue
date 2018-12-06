@@ -21,6 +21,16 @@ export default {
     const lineChart = new Chart($ctx, {
       type: 'line'
     })
+  },
+  methods: {
+    createChart(chartId, chartData) {
+      const ctx = document.getElementById(chartId);
+      const myChart = new Chart(ctx, {
+        type: chartData.type,
+        data: chartData.data,
+        options: chartData.options,
+      });
+    }
   }
 }
 </script>
